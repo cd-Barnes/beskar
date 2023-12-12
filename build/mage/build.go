@@ -299,11 +299,11 @@ func (b Build) build(ctx context.Context, name string) error {
 	}
 
 	if len(containers) > 0 && buildOpts.publishOptions != nil {
-		imageRepository := fmt.Sprintf(
-			"%s/%s:%s",
-			buildOpts.publishOptions.registry, buildOpts.publishOptions.repository,
-			buildOpts.publishOptions.version,
-		)
+		// imageRepository := fmt.Sprintf(
+		// 	"%s/%s:%s",
+		// 	buildOpts.publishOptions.registry, buildOpts.publishOptions.repository,
+		// 	buildOpts.publishOptions.version,
+		// )
 		images := client.Container()
 
 		if buildOpts.publishOptions.username != "" || buildOpts.publishOptions.password != nil {
@@ -314,13 +314,22 @@ func (b Build) build(ctx context.Context, name string) error {
 			)
 		}
 
-		digest, err := images.Publish(ctx, imageRepository, dagger.ContainerPublishOpts{
+		fmt.Println("exporting tars")
+		// export to host filesystem
+		_, err := images.Export(ctx, "/tmp/"+name+".tar", dagger.ContainerExportOpts{
 			PlatformVariants: containers,
 		})
 		if err != nil {
 			return err
 		}
-		fmt.Println("Image pushed", digest)
+
+		// digest, err := images.Publish(ctx, imageRepository, dagger.ContainerPublishOpts{
+		// 	PlatformVariants: containers,
+		// })
+		// if err != nil {
+		// 	return err
+		// }
+		// fmt.Println("Image pushed", digest)
 	}
 
 	return nil

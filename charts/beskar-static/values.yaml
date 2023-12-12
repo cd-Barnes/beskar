@@ -5,9 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/ctrliq/beskar-static
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: 0.0.1
+  repository: registry:5000/beskar-yum
+  tag: latest
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []

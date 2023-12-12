@@ -27,12 +27,12 @@ const (
 )
 
 var supportedPlatforms = map[dagger.Platform]map[string]string{
-	"linux/amd64":   {"GOARCH": "amd64"},
-	"linux/arm64":   {"GOARCH": "arm64"},
-	"linux/s390x":   {"GOARCH": "s390x"},
-	"linux/ppc64le": {"GOARCH": "ppc64le"},
-	"linux/arm/v6":  {"GOARCH": "arm", "GOARM": "6"},
-	"linux/arm/v7":  {"GOARCH": "arm", "GOARM": "7"},
+	//"linux/amd64": {"GOARCH": "amd64"},
+	"linux/arm64": {"GOARCH": "arm64"},
+	// "linux/s390x":   {"GOARCH": "s390x"},
+	// "linux/ppc64le": {"GOARCH": "ppc64le"},
+	// "linux/arm/v6":  {"GOARCH": "arm", "GOARM": "6"},
+	// "linux/arm/v7":  {"GOARCH": "arm", "GOARM": "7"},
 }
 
 var onceCalls = map[string]*onceCall{

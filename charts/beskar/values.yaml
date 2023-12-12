@@ -17,8 +17,8 @@ serviceAccount:
   annotations: {}
 
 image:
-  repository: ghcr.io/ctrliq/beskar
-  tag: 0.0.1
+  repository: registry:5000/beskar
+  tag: latest
   pullPolicy: IfNotPresent
 # imagePullSecrets:
     # - name: docker
